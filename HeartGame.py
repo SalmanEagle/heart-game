@@ -1,41 +1,19 @@
 # Thank you to DJ Oamen (https://youtu.be/3PXfTTcLXqA) for his demonstration titled
+
 # "How to Create a GUI Onscreen Keyboard in Python - Tutorial"
 
-import tkinter as tk
-from functools import partial
-from tkinter import messagebox
-from tkinter import*
-import tkinter
-import random
+# Reference format: "lead" = 12c4
 
+import random
+import tkinter
+from tkinter import*
+window = Tk()
+window.geometry('500x400')
+inpu = Entry(window, width=10, bg='blue')
+letterValue = ""
 
 with open("./wordlist.10000.txt") as word_file:
     words = word_file.read().split()
-
-
-Keyboard_App = tkinter.Tk()
-Keyboard_App.title("Heart Game")
-Keyboard_App['bg'] = 'blue'
-Keyboard_App.geometry("415x705")
-
-
-# for adjusting location and size of text box
-entry = Text(Keyboard_App, width=138, height=2, font=('arial', 10, 'bold'))
-entry.grid(row=1, columnspan=40, pady=10)
-
-buttons = ['i', 'r', '|', '9',
-           'h', 'q', 'z', '8',
-           'g', 'p', 'y', '7',
-           'f', 'o', 'x', '6',
-           'e', 'n', 'w', '5',
-           'd', 'm', 'v', '4',
-           'c', 'l', 'u', '3',
-           'b', 'k', 't', '2',
-           'a', 'j', 's', '1',
-           '0', '1', '2', '/']
-
-varRow = 2
-varColumn = 0
 
 
 def generateWord():
@@ -43,188 +21,190 @@ def generateWord():
     return translate
 
 
-def displayTablet(SourceText):
-    # Following is source of word disappearing bug:
-    label1 = Label(Keyboard_App, text="Visual Memory TABLET"+"\n"+SourceText, font=(
-        "arial", 20, 'bold'), fg='yellow', bg='blue').grid(row=0, columnspan=40, padx=30, sticky=W)
+buttons = [['i', 'r', '|', '9'],
+           ['h', 'q', 'z', '8'],
+           ['g', 'p', 'y', '7'],
+           ['f', 'o', 'x', '6'],
+           ['e', 'n', 'w', '5'],
+           ['d', 'm', 'v', '4'],
+           ['c', 'l', 'u', '3'],
+           ['b', 'k', 't', '2'],
+           ['a', 'j', 's', '1'],
+           ['0', '1', '2', '/']]
+
+inpu.grid(row=0, column=0)
+
+randomWord = generateWord()
+
+Label(window, text=randomWord).grid(row=0, column=1)
 
 
-global ToTranslate
-ToTranslate = generateWord()
+def dispButtons():
+    def execute(character):
+        print(character)
+        # inpu.delete(0, "end")
+        inpu.insert(0, character)
+    r = 1
+    for row in buttons:
+        c = 1
+        for character in row:
+            # inpu.delete(0,"end")
+            # if character == "/":
+            # print(character)
+            tkinter.Button(window, text=character, command=lambda: execute(
+                character)).grid(row=r, column=c)
+            # else:
+            # inpu.insert(tkinter.END, column)
+            c += 1
+        r += 1
 
 
-def redeploy():
-    # ToTranslate = generateWord()
-    displayTablet(ToTranslate)
-    answer = interpreter(ToTranslate)
-    return answer
+dispButtons()
+
+# Reference format: "lead" = 13c4
+# Reference format: "medicare" = 14d8
+
+# Part One: Initial Letter
+# Part Two: basis
+# Part Three: length of word
 
 
-def select(value):
-    # problem: each time I click, this function is invoked
-    # correctNOTATION = interpreter(generateWord())
-
-    # if value == " Space ":
-    #     entry.insert(tkinter.END, '   ')
-
-    # elif value == "Tab":
-    #     entry.insert(tkinter.END, '     ')
-    if value == "/":
-        ans = redeploy()
-        if entry.get("1.0", 'end-1c') == ans:
-            messagebox.showinfo("Result", "CORRECT!")
-            displayTablet(generateWord())
-
-        elif entry.get("1.0", 'end-1c') == "e":
-            messagebox.showinfo("Bye", "You pressed EXIT!")
-            Keyboard_App.destroy()
-
-        else:
-            messagebox.showinfo(
-                "Result", "Incorrect; the Correct answer is:\n                   " + ans)
-
-        # answer = interpreter(generateWord())
-        # generateWord()
-        # displayTablet(ToTranslate)
-        # ans = redeploy()
+def translateWordPartOne(randomWord):
+    # for i in range(0, 26):
+    if randomWord[0] == 'a':
+        letterValue = '01'
+    elif randomWord[0] == 'b':
+        letterValue = '02'
+    elif randomWord[0] == 'c':
+        letterValue = '03'
+    elif randomWord[0] == 'd':
+        letterValue = '04'
+    elif randomWord[0] == 'e':
+        letterValue = '05'
+    elif randomWord[0] == 'f':
+        letterValue = '06'
+    elif randomWord[0] == 'g':
+        letterValue = '07'
+    elif randomWord[0] == 'h':
+        letterValue = '08'
+    elif randomWord[0] == 'i':
+        letterValue = '09'
+    elif randomWord[0] == 'j':
+        letterValue = '11'
+    elif randomWord[0] == 'k':
+        letterValue = '12'
+    elif randomWord[0] == 'l':
+        letterValue = '13'
+    elif randomWord[0] == 'm':
+        letterValue = '14'
+    elif randomWord[0] == 'n':
+        letterValue = '15'
+    elif randomWord[0] == 'o':
+        letterValue = '16'
+    elif randomWord[0] == 'p':
+        letterValue = '17'
+    elif randomWord[0] == 'q':
+        letterValue = '18'
+    elif randomWord[0] == 'r':
+        letterValue = '19'
+    elif randomWord[0] == 's':
+        letterValue = '21'
+    elif randomWord[0] == 't':
+        letterValue = '22'
+    elif randomWord[0] == 'u':
+        letterValue = '23'
+    elif randomWord[0] == 'v':
+        letterValue = '24'
+    elif randomWord[0] == 'w':
+        letterValue = '25'
+    elif randomWord[0] == 'x':
+        letterValue = '26'
+    elif randomWord[0] == 'y':
+        letterValue = '27'
+    elif randomWord[0] == 'z':
+        letterValue = '28'
     else:
-        entry.insert(tkinter.END, value)
+        letterValue = '29'
+    return letterValue
 
 
-def interpreter(SourceWord):
-    correctNotationInitial = SourceWord[0]
-
-    # Alphabet Numerical Equivalence follows:
-    if correctNotationInitial == '0':
-        Box = "00"
-    elif correctNotationInitial == 'a':
-        Box = "01"
-    elif correctNotationInitial == 'b':
-        Box = "02"
-    elif correctNotationInitial == 'c':
-        Box = "03"
-    elif correctNotationInitial == 'd':
-        Box = "04"
-    elif correctNotationInitial == 'e':
-        Box = "05"
-    elif correctNotationInitial == 'f':
-        Box = "06"
-    elif correctNotationInitial == 'g':
-        Box = "07"
-    elif correctNotationInitial == 'h':
-        Box = "08"
-    elif correctNotationInitial == 'i':
-        Box = "09"
-    elif correctNotationInitial == '1':
-        Box = "10"
-    elif correctNotationInitial == 'j':
-        Box = "11"
-    elif correctNotationInitial == 'k':
-        Box = "12"
-    elif correctNotationInitial == 'l':
-        Box = "13"
-    elif correctNotationInitial == 'm':
-        Box = "14"
-    elif correctNotationInitial == 'n':
-        Box = "15"
-    elif correctNotationInitial == 'o':
-        Box = "16"
-    elif correctNotationInitial == 'p':
-        Box = "17"
-    elif correctNotationInitial == 'q':
-        Box = "18"
-    elif correctNotationInitial == 'r':
-        Box = "19"
-    elif correctNotationInitial == '2':
-        Box = "20"
-    elif correctNotationInitial == 's':
-        Box = "21"
-    elif correctNotationInitial == 't':
-        Box = "22"
-    elif correctNotationInitial == 'u':
-        Box = "23"
-    elif correctNotationInitial == 'v':
-        Box = "24"
-    elif correctNotationInitial == 'w':
-        Box = "25"
-    elif correctNotationInitial == 'x':
-        Box = "26"
-    elif correctNotationInitial == 'y':
-        Box = "27"
-    elif correctNotationInitial == 'z':
-        Box = "28"
-
-    BoxFirst = Box[0]
-    BoxSecond = Box[1]
-    length = str(len(SourceWord))
-
-    # Root letters
-    if BoxSecond == "1":
-        ANE = "a"
-    elif BoxSecond == "2":
-        ANE = "b"
-    elif BoxSecond == "3":
-        ANE = "c"
-    elif BoxSecond == "4":
-        ANE = "d"
-    elif BoxSecond == "5":
-        ANE = "e"
-    elif BoxSecond == "6":
-        ANE = "f"
-    elif BoxSecond == "7":
-        ANE = "g"
-    elif BoxSecond == "8":
-        ANE = "h"
-    elif BoxSecond == "9":
-        ANE = "i"
-
-    correctNOTATION = BoxFirst+BoxSecond+ANE+length
-    return correctNOTATION
+# Part Two: basis
+# Reference format: "medicare" = 14d8
+# Reference format: "moments" = 14d7
+def translateWordPartTwo(randomWord):
+    if randomWord[0] == 'a':
+        basis = 'a'
+    elif randomWord[0] == 'b':
+        basis = 'b'
+    elif randomWord[0] == 'c':
+        basis = 'c'
+    elif randomWord[0] == 'd':
+        basis = 'd'
+    elif randomWord[0] == 'e':
+        basis = 'e'
+    elif randomWord[0] == 'f':
+        basis = 'f'
+    elif randomWord[0] == 'g':
+        basis = 'g'
+    elif randomWord[0] == 'h':
+        basis = 'h'
+    elif randomWord[0] == 'i':
+        basis = 'i'
+    elif randomWord[0] == 'j':
+        basis = 'a'
+    elif randomWord[0] == 'k':
+        basis = 'b'
+    elif randomWord[0] == 'l':
+        basis = 'c'
+    elif randomWord[0] == 'm':
+        basis = 'd'
+    elif randomWord[0] == 'n':
+        basis = 'e'
+    elif randomWord[0] == 'o':
+        basis = 'f'
+    elif randomWord[0] == 'p':
+        basis = 'g'
+    elif randomWord[0] == 'q':
+        basis = 'h'
+    elif randomWord[0] == 'r':
+        basis = 'i'
+    elif randomWord[0] == 's':
+        basis = 'a'
+    elif randomWord[0] == 't':
+        basis = 'b'
+    elif randomWord[0] == 'u':
+        basis = 'c'
+    elif randomWord[0] == 'v':
+        basis = 'd'
+    elif randomWord[0] == 'w':
+        basis = 'e'
+    elif randomWord[0] == 'x':
+        basis = 'f'
+    elif randomWord[0] == 'y':
+        basis = 'g'
+    elif randomWord[0] == 'z':
+        basis = 'h'
+    else:
+        basis = 'i'
+    return basis
 
 
-for button in buttons:
-    redeploy()
-    # ToTranslate = generateWord()
-    # displayTablet(ToTranslate)
-    # answer = interpreter(ToTranslate)
-
-    # translate = random.choice(words)
-    # label1 = Label(Keyboard_App, text="Visual Memory TABLET"+"\n"+translate, font=(
-    #     "arial", 20, 'bold'), fg='yellow', bg='blue').grid(row=0, columnspan=40, padx=30, sticky=W)
-
-    def command(x=button): select(x)
-    tkinter.Button(Keyboard_App, text=button, width=3, bd=12, font=('arial', 12, ' bold'), bg='blue',
-                   activebackground="#ffffff", activeforeground="#000990", relief="raised", command=command).grid(
-        row=varRow, column=varColumn)
-
-    varColumn += 1
-    if varColumn > 3 and varRow == 2:
-        varColumn = 0
-        varRow += 1
-    if varColumn > 3 and varRow == 3:
-        varColumn = 0
-        varRow += 1
-    if varColumn > 3 and varRow == 4:
-        varColumn = 0
-        varRow += 1
-    if varColumn > 3 and varRow == 5:
-        varColumn = 0
-        varRow += 1
-    if varColumn > 3 and varRow == 6:
-        varColumn = 0
-        varRow += 1
-    if varColumn > 3 and varRow == 7:
-        varColumn = 0
-        varRow += 1
-    if varColumn > 3 and varRow == 8:
-        varColumn = 0
-        varRow += 1
-    if varColumn > 3 and varRow == 9:
-        varColumn = 0
-        varRow += 1
-    if varColumn > 3 and varRow == 10:
-        varColumn = 0
-        varRow += 1
+def translateWordPartThree(randomWord):
+    length = len(randomWord)
+    return length
 
 
-Keyboard_App.mainloop()
+def match():
+    if inpu.get() == (str(translateWordPartOne(randomWord)) + translateWordPartTwo(randomWord) + str(translateWordPartThree(randomWord))):
+        print("CORRECT!")
+    else:
+        print("Incorrect!!")
+
+
+print(translateWordPartOne(randomWord))
+print(translateWordPartTwo(randomWord))
+print(translateWordPartThree(randomWord))
+match()
+
+
+window.mainloop()

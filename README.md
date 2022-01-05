@@ -2,7 +2,7 @@
 
 If you have seen the Netlix drama "The Queen's Gambit", that is precisely the sort of photographic or visual memory; this game can - potentially - develop.
 
-Theoretically, Heart is the organ of meta learning. "Heart Game" will exercise meta learning skills - by relying on a little known mathematics rule that can condense an infinitizing series of digits into just 9 digits. It is the fundamental management principle of the unvierse, in my opinion.
+Theoretically, Heart is the organ of meta learning. "Heart Game" will exercise meta learning skills - by relying on a little known mathematics rule that can condense an infinitizing series of digits into just 9 digits.
 
 The beauty of our Visual Memory Tablet [VMT] is that you are recalling representations of words based on a plot (x, y coordinates).
 
