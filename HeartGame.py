@@ -266,7 +266,7 @@ def translateWord(randomWord):
         letterValue = '28'
     else:
         letterValue = '29'
-    print(letterValue)
+    # print(letterValue)
 
 # find the basic letter (part TWO of translation)
     if randomWord[0] == 'a':
@@ -323,16 +323,16 @@ def translateWord(randomWord):
         basis = 'h'
     else:
         basis = 'i'
-    print(basis)
+    # print(basis)
 
 # find length of word, part THREE of translation
     length = len(randomWord)
-    print(length)
+    # print(length)
     return (str(letterValue) + basis + str(length))
 
 
 def match():
-    print(inpu.get())
+    # print(inpu.get())
     # if inpu.get() == (str(letterValue) + basis + str(length)):
     if inpu.get() == translateWord(randomWord):
         messagebox.showinfo("Result", "CORRECT!")
@@ -340,7 +340,8 @@ def match():
         subprocess.call(
             ['python', "D:\Dropbox\+9 WORK\Gitted\heart-game\HeartGame.py"])
     else:
-        messagebox.showinfo("Result", "Incorrect!!")
+        messagebox.showinfo("Result", "Incorrect!! Try: " +
+                            translateWord(randomWord))
         # print("Incorrect!!")
 
 
