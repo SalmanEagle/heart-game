@@ -1,16 +1,34 @@
 # This is code written by github.com/winnerman212
 
-
+# import os
+# import sys
+import subprocess
 import random
 import tkinter as tk
 from tkinter import messagebox
 from tkinter import *
 window = Tk()
-window.geometry('500x400')
-inpu = Entry(window, width=10, bg='blue')
+window.title('HG')
+window.resizable(0, 0)
+# window.geometry('500x400')
+inpu = Entry(window, width=8, bg='blue', fg='white')
 letterValue = ""
 basis = ''
 length = 1
+
+window_width = 200
+window_height = 300
+
+# get the screen dimension
+screen_width = window.winfo_screenwidth()
+screen_height = window.winfo_screenheight()
+
+# find the center point
+center_x = int(screen_width/2 - window_width / 2)
+center_y = int(screen_height/2 - window_height / 2)
+
+# set the position of the window to the center of the screen
+window.geometry(f'{window_width}x{window_height}+{center_x}+{center_y}')
 
 with open("./wordlist.10000.txt") as word_file:
     words = word_file.read().split()
@@ -36,7 +54,7 @@ inpu.grid(row=0, column=0)
 
 randomWord = generateWord()
 
-Label(window, text=randomWord).grid(row=0, column=1)
+Label(window, text=randomWord).grid(row=0, column=10)
 
 
 def execute(ch):
@@ -318,11 +336,9 @@ def match():
     # if inpu.get() == (str(letterValue) + basis + str(length)):
     if inpu.get() == translateWord(randomWord):
         messagebox.showinfo("Result", "CORRECT!")
-        # generateWord()
-        # window.destroy()
-        # window.__init__()
-        # window.update()
-        # print("CORRECT!")
+        window.destroy()
+        subprocess.call(
+            ['python', "D:\Dropbox\+9 WORK\Gitted\heart-game\HeartGame.py"])
     else:
         messagebox.showinfo("Result", "Incorrect!!")
         # print("Incorrect!!")
