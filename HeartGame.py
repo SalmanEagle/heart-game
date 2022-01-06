@@ -3,6 +3,7 @@
 
 import random
 import tkinter as tk
+from tkinter import messagebox
 from tkinter import *
 window = Tk()
 window.geometry('500x400')
@@ -192,8 +193,7 @@ b40.grid(row=10, column=4)
 
 
 def translateWord(randomWord):
-    # extract first letter
-    # for i in range(0, 26):
+    # extract first letter, part ONE of translation
     if randomWord[0] == 'a':
         letterValue = '01'
     elif randomWord[0] == 'b':
@@ -249,8 +249,8 @@ def translateWord(randomWord):
     else:
         letterValue = '29'
     print(letterValue)
-# find the basic letter
 
+# find the basic letter (part TWO of translation)
     if randomWord[0] == 'a':
         basis = 'a'
     elif randomWord[0] == 'b':
@@ -306,20 +306,25 @@ def translateWord(randomWord):
     else:
         basis = 'i'
     print(basis)
-# find length of word
+
+# find length of word, part THREE of translation
     length = len(randomWord)
     print(length)
+    return (str(letterValue) + basis + str(length))
 
 
 def match():
     print(inpu.get())
-    if inpu.get() == (str(letterValue) + basis + str(length)):
-        print("CORRECT!")
+    # if inpu.get() == (str(letterValue) + basis + str(length)):
+    if inpu.get() == translateWord(randomWord):
+        messagebox.showinfo("Result", "CORRECT!")
+        # print("CORRECT!")
     else:
-        print("Incorrect!!")
+        messagebox.showinfo("Result", "Incorrect!!")
+        # print("Incorrect!!")
 
 
-translateWord(randomWord)
+# translateWord(randomWord)
 
 
 window.mainloop()
