@@ -1,16 +1,15 @@
-# Thank you to DJ Oamen (https://youtu.be/3PXfTTcLXqA) for his demonstration titled
+# This is code written by github.com/winnerman212
 
-# "How to Create a GUI Onscreen Keyboard in Python - Tutorial"
-
-# Reference format: "lead" = 12c4
 
 import random
-import tkinter
-from tkinter import*
+import tkinter as tk
+from tkinter import *
 window = Tk()
 window.geometry('500x400')
 inpu = Entry(window, width=10, bg='blue')
 letterValue = ""
+basis = ''
+length = 1
 
 with open("./wordlist.10000.txt") as word_file:
     words = word_file.read().split()
@@ -39,6 +38,9 @@ randomWord = generateWord()
 Label(window, text=randomWord).grid(row=0, column=1)
 
 
+def execute(ch):
+    inpu.insert(END, ch)
+
 # def dispButtons():
 #     def execute(character):
 #         print(character)
@@ -51,131 +53,132 @@ Label(window, text=randomWord).grid(row=0, column=1)
 #             # inpu.delete(0,"end")
 #             # if character == "/":
 #             # print(character)
-#             tkinter.Button(window, text=character, command=lambda: execute(
+#             tk.Button(window, text=character, command=lambda: execute(
 #                 character)).grid(row=r, column=c)
 #             # else:
-#             # inpu.insert(tkinter.END, column)
+#             # inpu.insert(tk.END, column)
 #             c += 1
 #         r += 1
 
-b1 = tkinter.Button(window, text="i")
+
+b1 = tk.Button(window, text="i", command=lambda: execute("i"))
 b1.grid(row=1, column=1)
 
-b2 = tkinter.Button(window, text="r")
+b2 = tk.Button(window, text="r", command=lambda: execute("r"))
 b2.grid(row=1, column=2)
 
-b3 = tkinter.Button(window, text="|")
+b3 = tk.Button(window, text="|", command=lambda: execute("|"))
 b3.grid(row=1, column=3)
 
-b4 = tkinter.Button(window, text="9")
+b4 = tk.Button(window, text="9", command=lambda: execute("9"))
 b4.grid(row=1, column=4)
 
-b5 = tkinter.Button(window, text="h")
+b5 = tk.Button(window, text="h", command=lambda: execute("h"))
 b5.grid(row=2, column=1)
 
-b6 = tkinter.Button(window, text="q")
+b6 = tk.Button(window, text="q", command=lambda: execute("q"))
 b6.grid(row=2, column=2)
 
-b7 = tkinter.Button(window, text="z")
+b7 = tk.Button(window, text="z", command=lambda: execute("z"))
 b7.grid(row=2, column=3)
 
-b8 = tkinter.Button(window, text="8")
+b8 = tk.Button(window, text="8", command=lambda: execute("8"))
 b8.grid(row=2, column=4)
 
-b9 = tkinter.Button(window, text="g")
+b9 = tk.Button(window, text="g", command=lambda: execute("g"))
 b9.grid(row=3, column=1)
 
-b10 = tkinter.Button(window, text="p")
+b10 = tk.Button(window, text="p", command=lambda: execute("p"))
 b10.grid(row=3, column=2)
 
-b11 = tkinter.Button(window, text="y")
+b11 = tk.Button(window, text="y", command=lambda: execute("y"))
 b11.grid(row=3, column=3)
 
-b12 = tkinter.Button(window, text="7")
+b12 = tk.Button(window, text="7", command=lambda: execute("7"))
 b12.grid(row=3, column=4)
 
-b13 = tkinter.Button(window, text="f")
+b13 = tk.Button(window, text="f", command=lambda: execute("f"))
 b13.grid(row=4, column=1)
 
-b14 = tkinter.Button(window, text="o")
+b14 = tk.Button(window, text="o", command=lambda: execute("o"))
 b14.grid(row=4, column=2)
 
-b15 = tkinter.Button(window, text="x")
+b15 = tk.Button(window, text="x", command=lambda: execute("x"))
 b15.grid(row=4, column=3)
 
-b16 = tkinter.Button(window, text="6")
+b16 = tk.Button(window, text="6", command=lambda: execute("6"))
 b16.grid(row=4, column=4)
 
-b17 = tkinter.Button(window, text="e")
+b17 = tk.Button(window, text="e", command=lambda: execute("e"))
 b17.grid(row=5, column=1)
 
-b18 = tkinter.Button(window, text="n")
+b18 = tk.Button(window, text="n", command=lambda: execute("n"))
 b18.grid(row=5, column=2)
 
-b19 = tkinter.Button(window, text="w")
+b19 = tk.Button(window, text="w", command=lambda: execute("w"))
 b19.grid(row=5, column=3)
 
-b20 = tkinter.Button(window, text="5")
+b20 = tk.Button(window, text="5", command=lambda: execute("5"))
 b20.grid(row=5, column=4)
 
-b21 = tkinter.Button(window, text="d")
+b21 = tk.Button(window, text="d", command=lambda: execute("d"))
 b21.grid(row=6, column=1)
 
-b22 = tkinter.Button(window, text="m")
+b22 = tk.Button(window, text="m", command=lambda: execute('m'))
 b22.grid(row=6, column=2)
 
-b23 = tkinter.Button(window, text="v")
+b23 = tk.Button(window, text="v", command=lambda: execute('v'))
 b23.grid(row=6, column=3)
 
-b24 = tkinter.Button(window, text="4")
+b24 = tk.Button(window, text="4", command=lambda: execute('4'))
 b24.grid(row=6, column=4)
 
-b25 = tkinter.Button(window, text="c")
+b25 = tk.Button(window, text="c", command=lambda: execute('c'))
 b25.grid(row=7, column=1)
 
-b26 = tkinter.Button(window, text="l")
+b26 = tk.Button(window, text="l", command=lambda: execute('l'))
 b26.grid(row=7, column=2)
 
-b27 = tkinter.Button(window, text="u")
+b27 = tk.Button(window, text="u", command=lambda: execute('u'))
 b27.grid(row=7, column=3)
 
-b28 = tkinter.Button(window, text="3")
+b28 = tk.Button(window, text="3", command=lambda: execute('3'))
 b28.grid(row=7, column=4)
 
-b29 = tkinter.Button(window, text="b")
+b29 = tk.Button(window, text="b", command=lambda: execute('b'))
 b29.grid(row=8, column=1)
 
-b30 = tkinter.Button(window, text="k")
+b30 = tk.Button(window, text="k", command=lambda: execute('k'))
 b30.grid(row=8, column=2)
 
-b31 = tkinter.Button(window, text="t")
+b31 = tk.Button(window, text="t", command=lambda: execute('t'))
 b31.grid(row=8, column=3)
 
-b32 = tkinter.Button(window, text="2")
+b32 = tk.Button(window, text="2", command=lambda: execute('2'))
 b32.grid(row=8, column=4)
 
-b33 = tkinter.Button(window, text="a")
+b33 = tk.Button(window, text="a", command=lambda: execute('a'))
 b33.grid(row=9, column=1)
 
-b34 = tkinter.Button(window, text="j")
+b34 = tk.Button(window, text="j", command=lambda: execute('j'))
 b34.grid(row=9, column=2)
 
-b35 = tkinter.Button(window, text="s")
+b35 = tk.Button(window, text="s", command=lambda: execute('s'))
 b35.grid(row=9, column=3)
 
-b36 = tkinter.Button(window, text="1")
+b36 = tk.Button(window, text="1", command=lambda: execute('1'))
 b36.grid(row=9, column=4)
 
-b37 = tkinter.Button(window, text="0")
+b37 = tk.Button(window, text="0", command=lambda: execute('0'))
 b37.grid(row=10, column=1)
 
-b38 = tkinter.Button(window, text="1")
+b38 = tk.Button(window, text="1", command=lambda: execute('1'))
 b38.grid(row=10, column=2)
 
-b39 = tkinter.Button(window, text="2")
+b39 = tk.Button(window, text="2", command=lambda: execute('2'))
 b39.grid(row=10, column=3)
 
-b40 = tkinter.Button(window, text="/")
+b40 = tk.Button(window, text="/", command=lambda: match())
 b40.grid(row=10, column=4)
 
 # dispButtons()
@@ -188,7 +191,8 @@ b40.grid(row=10, column=4)
 # Part Three: length of word
 
 
-def translateWordPartOne(randomWord):
+def translateWord(randomWord):
+    # extract first letter
     # for i in range(0, 26):
     if randomWord[0] == 'a':
         letterValue = '01'
@@ -244,13 +248,9 @@ def translateWordPartOne(randomWord):
         letterValue = '28'
     else:
         letterValue = '29'
-    return letterValue
+    print(letterValue)
+# find the basic letter
 
-
-# Part Two: basis
-# Reference format: "medicare" = 14d8
-# Reference format: "moments" = 14d7
-def translateWordPartTwo(randomWord):
     if randomWord[0] == 'a':
         basis = 'a'
     elif randomWord[0] == 'b':
@@ -305,25 +305,21 @@ def translateWordPartTwo(randomWord):
         basis = 'h'
     else:
         basis = 'i'
-    return basis
-
-
-def translateWordPartThree(randomWord):
+    print(basis)
+# find length of word
     length = len(randomWord)
-    return length
+    print(length)
 
 
 def match():
-    if inpu.get() == (str(translateWordPartOne(randomWord)) + translateWordPartTwo(randomWord) + str(translateWordPartThree(randomWord))):
+    print(inpu.get())
+    if inpu.get() == (str(letterValue) + basis + str(length)):
         print("CORRECT!")
     else:
         print("Incorrect!!")
 
 
-print(translateWordPartOne(randomWord))
-print(translateWordPartTwo(randomWord))
-print(translateWordPartThree(randomWord))
-match()
+translateWord(randomWord)
 
 
 window.mainloop()
