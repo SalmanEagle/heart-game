@@ -318,6 +318,10 @@ def match():
     # if inpu.get() == (str(letterValue) + basis + str(length)):
     if inpu.get() == translateWord(randomWord):
         messagebox.showinfo("Result", "CORRECT!")
+        # generateWord()
+        # window.destroy()
+        # window.__init__()
+        # window.update()
         # print("CORRECT!")
     else:
         messagebox.showinfo("Result", "Incorrect!!")
