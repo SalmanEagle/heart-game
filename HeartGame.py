@@ -34,32 +34,19 @@ buttons = [['i', 'r', '|', '9'],
 
 inpu.grid(row=0, column=0)
 
-randomWord = generateWord()
+randomWord = ""
+
+
+def randomize():
+    randomWord = generateWord()
+    return randomWord
+
 
 Label(window, text=randomWord).grid(row=0, column=1)
 
 
 def execute(ch):
     inpu.insert(END, ch)
-
-# def dispButtons():
-#     def execute(character):
-#         print(character)
-#         # inpu.delete(0, "end")
-#         inpu.insert(0, character)
-#     r = 1
-#     for row in buttons:
-#         c = 1
-#         for character in row:
-#             # inpu.delete(0,"end")
-#             # if character == "/":
-#             # print(character)
-#             tk.Button(window, text=character, command=lambda: execute(
-#                 character)).grid(row=r, column=c)
-#             # else:
-#             # inpu.insert(tk.END, column)
-#             c += 1
-#         r += 1
 
 
 b1 = tk.Button(window, text="i", command=lambda: execute("i"))
@@ -191,8 +178,10 @@ b40.grid(row=10, column=4)
 # Part Two: basis
 # Part Three: length of word
 
+randomWord = randomize()
 
-def translateWord(randomWord):
+
+def translateWord(var):
     # extract first letter, part ONE of translation
     if randomWord[0] == 'a':
         letterValue = '01'
@@ -326,9 +315,6 @@ def match():
     else:
         messagebox.showinfo("Result", "Incorrect!!")
         # print("Incorrect!!")
-
-
-# translateWord(randomWord)
 
 
 window.mainloop()
